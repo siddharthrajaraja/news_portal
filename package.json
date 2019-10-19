@@ -1,0 +1,19 @@
+{
+  "name": "news_portal",
+  "version": "1.0.0",
+  "description": "\"This is website for IIT-B internship\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SIDDHARTH RAJA",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "materialize-css": "^1.0.0",
+    "mongoose": "^5.7.5"
+  }
+}
