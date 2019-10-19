@@ -1,0 +1,42 @@
+
+<div class="parallax-container">
+        <div class="parallax">
+          <img src="https://c.ndtvimg.com/2019-10/oefgtgd_virat-kohli_625x300_19_October_19.jpg" alt="Virat Kohli" class="responive-img" >
+        </div>
+      </div>
+     <!--ONLY FOR ADMIN--> 
+      <div class="section white" id="admin-input" >
+        <div class="row container">
+          <h2 class="header black-text">Whats happening ?? </h2>
+          <p class="grey-text text-darken-3 lighten-3"></p>
+            <%include readfile.ejs%>
+        </div>
+      </div>
+      <!--ADMIN ENDS-->
+      
+      <!--USERS-->
+      <div class="section white" id="user-input" >
+          <div class="row container">
+            <h2 class="header black-text">Whats happening ?? </h2>
+            <p class="grey-text text-darken-3 lighten-3"></p>
+              This is visible to user
+          </div>
+        </div>
+        
+      <!--USERS-->
+      <div class="parallax-container">
+        <div class="parallax"><img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201910/modi123-770x433.jpeg?PbARwurbsvidMhO3YKMq_5knCWoyELjn" class="responsive-img"></div>
+      </div>
+  </div>    
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.parallax');
+            var instances = M.Parallax.init(elems, {});
+          });
+</script>
+
+<script>
+  var url=document.URL.split("/")
+  if(url[url.length-1]!="readfile")document.getElementById('admin-input').style.display="none";
+  if(url[url.length-1]=="readfile")document.getElementById('user-input').style.display="none";
+</script>

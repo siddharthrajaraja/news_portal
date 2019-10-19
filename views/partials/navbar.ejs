@@ -1,0 +1,91 @@
+<nav class="nav-extended black">
+    <div class="nav-wrapper">
+      <a href="#" id="heading" class="brand-logo" > <i class="material-icons">message</i>  NEWS TODAY </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><!-- Modal Trigger --><button data-target="modal1" id="admin_login1" class="btn modal-trigger black tooltipped" data-position="bottom" data-tooltip="Add New Section" >Admin Login</button></li>
+        <li><a href="/dashboard" id="dashboard1" >Dashboard</a></li>
+      </ul>
+    </div>
+    
+    
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="/admin_credential" id="admin_login2" data-target="modal1" class="waves-effect waves-light btn modal-trigger" >Admin Login</a></li>
+    <li><a href="/dashboard" id="dashboard2" >Dashboard</a></li>
+  </ul>
+  
+  
+         
+  <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <form action="/admin_check" method="post">
+        <div class="modal-content">
+          <h4 class="black-text">Admin Credentials</h4>
+            <div class="input-field">
+                    <input type="text" name="username" id="username"> <label for="username"> <i class="material-icons">face</i> Enter username </label>
+              </div>
+              <br>
+              <div class="input-field">
+                  <input type="password"name="password" id="password"> <label for="password"> <i class="material-icons">lock_open</i> Enter password</label>
+              </div>
+            
+            </div>  
+          
+          <div class="modal-footer">
+              <button type="submit" class="black modal-close waves-effect waves-green btn-flat white-text">Submit</button>
+            </div>
+          </form>
+        </div>
+       
+      
+    
+      
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, {});
+          });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+    var el = document.querySelectorAll('.tabs');
+    
+    var instance = M.Tabs.init(el, {});
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {});
+  });
+  
+</script>
+
+<script>
+  var url=document.URL.split("/")
+  
+  if(url[url.length-1]=="readfile" || url[url.length-1]=="dashboard"){
+    if(url[url.length-1]=="readfile"){
+        document.getElementById('admin_login1').style.display="none";
+        document.getElementById('admin_login2').style.display="none";
+        }
+    if(url[url.length-1]=="dashboard"){
+      document.getElementById('dashboard1').style.display="none";
+      document.getElementById('dashboard2').style.display="none";
+      
+
+    }    
+
+  }
+
+
+</script>
+<script>
+  if(screen.width<500){
+      document.getElementById('heading').style="font-size: 1rem;";
+  }
+</script>

@@ -1,0 +1,39 @@
+<ul class="collapsible">
+        <li>
+          <div class="collapsible-header" id="contain" ><i class="material-icons">cloud_upload</i>Upload the file of news section</div>
+          <div class="collapsible-body"><span>
+
+          <form id  =  "uploadForm"
+                enctype   =  "multipart/form-data"
+                action    =  "upload"
+                method    =  "post">
+                <div class="row center-align red-text">
+                    <label for="file1" > CLICK TO ADD FILE :</label>  
+                    <input type="file" name="file" id="file1"  style="cursor: pointer;" required > <br> <br>
+                    
+                </div>
+                <div class="row center-align" >
+                    <input type="submit" value="Upload" class="btn blue waves-effect white-text"    name="submit" style="cursor: pointer;">
+            
+                </div>
+                  
+            </form>
+    
+
+          </span></div>
+        </li>
+        
+      </ul>
+
+<script>
+    
+            document.addEventListener('DOMContentLoaded', function() {
+              var elems = document.querySelectorAll('.collapsible');
+              var instances = M.Collapsible.init(elems, {accordion:false});
+            });
+                  
+</script>      
+
+<style>
+
+</style>

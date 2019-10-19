@@ -4,16 +4,21 @@
   "description": "\"This is website for IIT-B internship\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index",
+    "serve": "nodemon index"
   },
   "author": "SIDDHARTH RAJA",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "materialize-css": "^1.0.0",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.5",
+    "multer": "^1.4.2",
+    "nodemon": "^1.19.4",
+    "read-excel-file": "^4.0.3"
   }
 }
