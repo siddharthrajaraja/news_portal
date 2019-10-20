@@ -1,43 +1,55 @@
-exports.populate= async function (){
+exports.populate= async function (fname){
     var {model_files}=require('./databaseschema.js')
     var mongoose=require('mongoose');
-    mongoose.connect('mongodb://127.0.0.1:27017/news_portal',{useUnifiedTopology:true,useNewUrlParser:true});
+    var keys=require('./keys')
+//    mongoose.connect('mongodb://127.0.0.1:27017/news_portal',{useUnifiedTopology:true,useNewUrlParser:true});
+    mongoose.connect(keys.mongo.URL,{useUnifiedTopology:true,useNewUrlParser:true});
+
     const connection=mongoose.connection
 
 
-await model_files.find({}).sort({index:-1}).then(async(data)=>{
-        console.log("Model is ",data[0])
      await connection.once('open',async()=>{
-                 mongoose.connection.db.dropCollection(data[0].files,(err,result)=>{console.log("DROPPED COLLECTION")})
+                 mongoose.connection.db.dropCollection(fname,(err,result)=>{console.log("DROPPED COLLECTION")})
         
-      })  
+      })
         
 
         var Schema= new mongoose.Schema({
-            headings:Array,
-            rowvalues:Array
+            data:Array
         });
-        var model=mongoose.model(data[0].files,Schema);
+        var model=mongoose.model(fname,Schema);
         var fs =require('fs')
         const readfile=require('read-excel-file/node')
-       readfile('uploads/data.xlsx').then(async(rows)=>{
+       readfile('./uploads/'+fname).then(async(rows)=>{
             //console.log(rows)
             
             var properties=rows[0];
             var values=[]
             for(var i=1;i<rows.length;i++)values.push(rows[i]);
-            var obj={
-                headings:properties,
-                rowvalues:values
-            }
+            
 
-           await model(obj).save(()=>{console.log(model,"CREATED")})
+            var Arrayobjs=[]
+            for(var i=1;i<rows.length;i++){
+                var perobj=new Object();
+                for(var j=0;j<properties.length;j++){
+
+                    perobj[properties[j]]=rows[i][j]
+                }
+                Arrayobjs.push(perobj)
+            }
+            //console.log(Array);
+
+
+            
+
+           await model({data:Arrayobjs}).save(()=>{console.log(model,"CREATED")})
            // for(var i=0;i<rows.length;i++) console.log(rows[i]);
             
         });
+
+        
     
-            
-})
+ 
     
    
 

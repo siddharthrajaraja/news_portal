@@ -1,7 +1,7 @@
 
 <div class="parallax-container">
-        <div class="parallax">
-          <img src="https://c.ndtvimg.com/2019-10/oefgtgd_virat-kohli_625x300_19_October_19.jpg" alt="Virat Kohli" class="responive-img" >
+        <div class="parallax"  >
+          <img src="https://c.ndtvimg.com/2019-10/oefgtgd_virat-kohli_625x300_19_October_19.jpg" alt="Virat Kohli" class="responive-img" id="sports" >
         </div>
       </div>
      <!--ONLY FOR ADMIN--> 
@@ -9,7 +9,7 @@
         <div class="row container">
           <h2 class="header black-text">Whats happening ?? </h2>
           <p class="grey-text text-darken-3 lighten-3"></p>
-            <%include readfile.ejs%>
+           <h6> <%include readfile.ejs%> </h6>
         </div>
       </div>
       <!--ADMIN ENDS-->
@@ -17,9 +17,9 @@
       <!--USERS-->
       <div class="section white" id="user-input" >
           <div class="row container">
-            <h2 class="header black-text">Whats happening ?? </h2>
+            <h2 class="header black-text">Current happenings</h2>
             <p class="grey-text text-darken-3 lighten-3"></p>
-              This is visible to user
+              <%include user_end.ejs%>
           </div>
         </div>
         
@@ -31,7 +31,7 @@
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.parallax');
-            var instances = M.Parallax.init(elems, {});
+            var instances = M.Parallax.init(elems, {responsiveThreshold:20});
           });
 </script>
 
@@ -39,4 +39,10 @@
   var url=document.URL.split("/")
   if(url[url.length-1]!="readfile")document.getElementById('admin-input').style.display="none";
   if(url[url.length-1]=="readfile")document.getElementById('user-input').style.display="none";
+  if(url[url.length-1]=="readfile"){
+    document.getElementById('sports').setAttribute('src','./assets/images/messi.jpg');
+    document.getElementById('sports').setAttribute('width','20rem');
+  
+  }
+  
 </script>

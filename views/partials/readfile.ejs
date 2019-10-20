@@ -1,16 +1,16 @@
-<ul class="collapsible">
+<ul class="collapsible coll1">
         <li>
           <div class="collapsible-header" id="contain" ><i class="material-icons">cloud_upload</i>Upload the file of news section</div>
           <div class="collapsible-body"><span>
 
           <form id  =  "uploadForm"
                 enctype   =  "multipart/form-data"
-                action    =  "upload"
+                action    =  "/dashboard/admin/upload"
                 method    =  "post">
                 <div class="row center-align red-text">
                     <label for="file1" > CLICK TO ADD FILE :</label>  
-                    <input type="file" name="file" id="file1"  style="cursor: pointer;" required > <br> <br>
-                    
+                    <input type="file" name="file" id="file1" value=""  onchange="returnpath();"  style="cursor: pointer;" required > <br> <br>
+                    <input type="text" name="read" id="read" value="">
                 </div>
                 <div class="row center-align" >
                     <input type="submit" value="Upload" class="btn blue waves-effect white-text"    name="submit" style="cursor: pointer;">
@@ -28,12 +28,19 @@
 <script>
     
             document.addEventListener('DOMContentLoaded', function() {
-              var elems = document.querySelectorAll('.collapsible');
+              var elems = document.querySelectorAll('.coll1');
+              console.log(elems)
               var instances = M.Collapsible.init(elems, {accordion:false});
             });
                   
 </script>      
 
-<style>
-
-</style>
+<script>
+  function returnpath(){
+    var path=document.getElementById('file1').value;
+    path=String(path).split('\\')
+    console.log(path[path.length-1])
+    document.getElementById('read').setAttribute('value',path[path.length-1])
+    
+  }
+</script>

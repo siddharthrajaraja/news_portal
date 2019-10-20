@@ -1,0 +1,44 @@
+<%if(datafiles!=="undefined"){%>
+    <ul class="collapsible coll2">
+        <li>
+        <div class="collapsible-header "><i class="material-icons">local_library</i>Check out what has happened around you!!</div>
+        <div class="collapsible-body ">
+            <span>
+                    <div class="container">
+                            <div class="row">
+
+                    <%for(var i=0;i<datafiles.length;i++){ var texttodisplay=datafiles[i].files.split('.')[0]; %>
+                        
+                                <div class="col s4">
+                                        <form action="/user/<%=texttodisplay%>" method="post">
+                                                        <button type="submit" class="btn black center-align" style="font-size: 0.7rem;" ><%=texttodisplay%></button>
+                                            </form>
+                                          
+                                </div>
+                            
+                        
+                            <%};%>
+                        <%if (datafiles.length==0){%>
+                            <h6>No News Uploaded by the Admin</h6>
+                            <%};%>    
+                        </div>
+                        </div>
+            </span>
+        </div>
+        <script type="text/javascript">
+
+    
+                document.addEventListener('DOMContentLoaded', function() {
+                  var elem = document.querySelectorAll('.coll2');
+                  var instance = M.Collapsible.init(elem, {accordion:false});
+                });
+                      
+    </script>  
+</li>   
+    </ul>           
+    <%}else{%>
+            No updates !!!
+        <%};%>
+
+
+      

@@ -16,13 +16,21 @@ app.get('/dashboard/:id1/:id2',dashboard);
 var {model_files}=require('./databaseschema.js')
 
 
+/*
+model_files.deleteMany({},()=>{
+    console.log("deleted from index")
+})
+*/
 // -------------POST ROUTES------------------------>
-var {admin_check,post_upload}=require('./postroutes.js')
+var {admin_check,post_upload,what_to_display}=require('./postroutes.js')
 
 app.post('/dashboard/admin/upload',urlencodedParser, post_upload)
 
 
 app.post('/admin_check',urlencodedParser,admin_check);
+
+app.post('/user/:id',urlencodedParser,what_to_display);
+
 
 
 app.listen(process.env.PORT || 3500)
