@@ -14,8 +14,13 @@ exports.what_to_display=(req,res)=>{
   var mongoose=require('mongoose');
   var keys=require('./keys')
   mongoose.connect(keys.mongo.URL,{useUnifiedTopology:true,useNewUrlParser:true});
-  
-  var model= new mongoose.model(value+".xlsx",{})
+  var model;
+  try{
+     model= new mongoose.model(value+".xlsx")
+  }
+  catch(err){
+    model= new mongoose.model(value+".xlsx",{})
+  }
   //model=mongoose.model(req.params.id+".xlsx",{});
   model.find({}).then((data)=>{
     res.send(data)
@@ -52,6 +57,8 @@ var upload = multer({ //multer settings
 
     await model_files.countDocuments({files:file.originalname}).then(async(length)=>{
       if(length==0){
+       
+        console.log(typeof(model))
         var obj={files:file.originalname,index:1};
                 await  model_files(obj).save(()=>{console.log("File Added")});
         

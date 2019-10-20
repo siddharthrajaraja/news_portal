@@ -7,7 +7,7 @@ exports.populate= async function (fname){
 
     const connection=mongoose.connection
 
-
+        
      await connection.once('open',async()=>{
                  mongoose.connection.db.dropCollection(fname,(err,result)=>{console.log("DROPPED COLLECTION")})
         
@@ -17,7 +17,14 @@ exports.populate= async function (fname){
         var Schema= new mongoose.Schema({
             data:Array
         });
+      try{
+        var model=mongoose.model(fname);
+        
+      } 
+      catch(err){
         var model=mongoose.model(fname,Schema);
+        
+      } 
         var fs =require('fs')
         const readfile=require('read-excel-file/node')
        readfile('./uploads/'+fname).then(async(rows)=>{
@@ -47,6 +54,7 @@ exports.populate= async function (fname){
             
         });
 
+    
         
     
  

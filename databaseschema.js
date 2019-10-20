@@ -10,6 +10,7 @@ mongoose.connect(keys.mongo.URL,{useUnifiedTopology:true,useNewUrlParser:true});
 var fileSchema= new mongoose.Schema({
         files:"String",
         index:Number
+        
     });
 
 var model_files= mongoose.model('Databases',fileSchema);
