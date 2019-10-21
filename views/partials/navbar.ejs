@@ -1,10 +1,16 @@
+<%include dropdown_categories.ejs%>
+  
 <nav class="nav-extended black">
     <div class="nav-wrapper">
       <a href="#" id="heading" class="brand-logo" > <i class="material-icons">message</i>  NEWS TODAY </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" id="drop2" data-target="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><!-- Modal Trigger --><button data-target="modal1" id="admin_login1" class="btn modal-trigger black tooltipped" data-position="bottom" data-tooltip="Add new News Section" >Admin Login</button></li>
         <li><a href="/dashboard" id="dashboard1" >Dashboard</a></li>
+               
+              
       </ul>
     </div>
     
@@ -14,9 +20,10 @@
   <ul class="sidenav" id="mobile-demo">
     <li><a href="/admin_credential" id="admin_login2" data-target="modal1" class="waves-effect waves-light btn modal-trigger" >Admin Login</a></li>
     <li><a href="/dashboard" id="dashboard2" >Dashboard</a></li>
+    <li><a class="dropdown-trigger" href="#" class="scrollTo" id="drop1" data-target="dropdown1">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+        
   </ul>
-  
-  
+
          
   <!-- Modal Structure -->
     <div id="modal1" class="modal">
@@ -39,8 +46,6 @@
           </form>
         </div>
        
-      
-    
       
 <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -81,6 +86,17 @@
     }    
 
   }
+
+  if(decodeURI(url[url.length-1])!="News Data"){
+    document.getElementById('drop1').style.display="none";
+    document.getElementById('drop2').style.display="none";
+    
+    document.getElementById('search1').style.display="none";
+    document.getElementById('search2').style.display="none";
+    
+    
+  }
+
 
 
 </script>

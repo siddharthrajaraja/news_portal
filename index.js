@@ -22,7 +22,7 @@ model_files.deleteMany({},()=>{
 })
 */
 // -------------POST ROUTES------------------------>
-var {admin_check,post_upload,what_to_display}=require('./postroutes.js')
+var {admin_check,post_upload,what_to_display,lookfor}=require('./postroutes.js')
 
 app.post('/dashboard/admin/upload',urlencodedParser, post_upload)
 
@@ -31,6 +31,8 @@ app.post('/admin_check',urlencodedParser,admin_check);
 
 app.post('/user/:id',urlencodedParser,what_to_display);
 
+
+app.post('/search',urlencodedParser,lookfor)
 
 
 app.listen(process.env.PORT || 3500)

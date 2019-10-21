@@ -1,0 +1,41 @@
+
+<!-- Modal Trigger -->
+<a class="waves-effect btn-floating red waves-light btn modal-trigger pulse" href="#searchmodal" style="position: fixed;bottom:0;right:0;" ><i class="material-icons">search</i></a>
+<form action="/search" method="post">
+
+<!-- Modal Structure -->
+<div id="searchmodal" class="modal bottom-sheet">
+
+  <div class="modal-content">
+    <h4>Looking for Something?</h4>
+    <p>Search here .. </p>
+
+    <nav>
+
+            <div class="nav-wrapper black">
+              <form>
+                <div class="input-field">
+                  <input id="search" name="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+          </nav>
+    
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="modal-close waves-effect black white-text waves-green btn-flat">Submit</a>
+  </div>
+
+</div>
+</form>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems,{});
+  });
+</script>

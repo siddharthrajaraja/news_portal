@@ -1,0 +1,32 @@
+<%console.log(data.length)%>
+<table class="striped centered highlight responsive-table center-align">
+   <center><h3 id="tabcaption"></h3></center> 
+    <tr>
+            <%for(var i=0;i<headings.length;i++){%>
+                    <th><%=headings[i]%></th>
+            <%};%>
+    </tr>
+    
+            <%for(var i=0;i<data.length;i++){%>
+                    <tr>
+                    
+                <%for(var j=0;j<headings.length;j++){%>
+                <%var values= JSON.stringify(data[i]); values=JSON.parse(values);%>
+                <td>
+                    <%=values[headings[j]]%>
+                </td>
+            
+                <%};%>
+            
+        </tr>
+            <%};%>
+    
+</table>
+
+<br> <br>
+
+<script>
+        document.getElementById('tabcaption').innerHTML=decodeURI(url[url.length-1].split('/'));
+        //document.getElementById('tabcaption').setAttribute('value',decodeURI(url[url.length-1].split('/'))
+   
+</script>

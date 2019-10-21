@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News Data</title>
+</head>
+<body class="grey">
+    
+    <!-- Dropdown Structure -->
+
+<ul id="dropdown1" class="dropdown-content" onchange="check()">
+        <%for(var i=0;i<categories.length;i++){%>
+                <li><a href="#<%=categories[i]%>" class="scrollTo"><%=categories[i]%></a></li>
+                <li class="divider"></li>
+            <%}%>
+        
+      
+</ul>
+      
+
+    <%include partials/navbar.ejs%>
+    <%include partials/carousel.ejs%>
+    <%include partials/searchbar.ejs%>
+
+
+<!----This is main!!-->
+
+<%for(var i=0;i<categories.length;i++){ var color="white"; if(i%2==0)color="grey"; var cate=categories[i].toUpperCase(); %>
+    <h1 class="center-align"><%=cate%></h1>
+        <div class="container section scrollpy" id="<%=categories[i]%>">
+            <%for(var j=0;j<data.length;j++){%>
+                    <%if(categories[i]==data[j][headings[ind]]){%>
+                                            
+                        
+                        <%include partials/news_card.ejs%>
+                            
+
+                        <%};%>    
+                
+
+                <%};%>
+        
+        </div>
+
+    <%};%>
+
+
+
+
+
+
+
+
+ 
+    <br>
+
+   
+    <%include partials/footer.ejs%>
+</body>
+<%include partials/materialize.ejs%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+        $(".scrollTo").on('click', function(e) {
+            e.preventDefault();
+            var target = $(this).attr('href');
+            $('html, body').animate({
+              scrollTop: ($(target).offset().top)
+            }, 2000);
+         });
+</script>
+</html>

@@ -15,7 +15,8 @@ exports.populate= async function (fname){
         
 
         var Schema= new mongoose.Schema({
-            data:Array
+            data:Array,
+            headings:Array
         });
       try{
         var model=mongoose.model(fname);
@@ -45,11 +46,11 @@ exports.populate= async function (fname){
                 Arrayobjs.push(perobj)
             }
             //console.log(Array);
-
-
+            properties=rows[0]
+            console.log(properties)
             
 
-           await model({data:Arrayobjs}).save(()=>{console.log(model,"CREATED")})
+           await model({"data":Arrayobjs,"headings":properties}).save(()=>{console.log(model,"CREATED")})
            // for(var i=0;i<rows.length;i++) console.log(rows[i]);
             
         });
