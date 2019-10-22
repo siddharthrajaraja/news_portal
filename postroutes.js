@@ -125,7 +125,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
       cb(null, './uploads/')
   },
   filename: function (req, file, cb) {
-     cb(null, req.body.read)
+     cb(null, 'file.xlsx')
       
   }
 });

@@ -28,7 +28,7 @@ exports.populate= async function (fname){
       } 
         var fs =require('fs')
         const readfile=require('read-excel-file/node')
-       readfile('./uploads/'+fname).then(async(rows)=>{
+       readfile('./uploads/file.xlsx').then(async(rows)=>{
             //console.log(rows)
             
             var properties=rows[0];
